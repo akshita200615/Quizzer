@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizMaster - Interactive Quiz Platform | Test Your Knowledge</title>
+    <meta name="description" content="Challenge yourself with engaging quizzes across multiple categories. Test knowledge in science, history, programming, and sports. Real-time feedback and competitive leaderboards.">
+    <meta name="keywords" content="quiz app, online quizzes, test knowledge, education, learning platform, trivia, interactive learning">
+    <meta name="author" content="QuizMaster">
+
+    <meta property="og:title" content="QuizMaster - Interactive Quiz Platform">
+    <meta property="og:description" content="Challenge yourself with engaging quizzes across multiple categories. Test your knowledge and compete with others!">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="/quiz-og-image.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="QuizMaster - Interactive Quiz Platform">
+    <meta name="twitter:description" content="Challenge yourself with engaging quizzes across multiple categories">
+    <meta name="twitter:image" content="/quiz-og-image.jpg">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Home Page -->
+    <div id="homePage" class="page active">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <div class="hero-image">
+                    <img src="img/logo.png" alt="Quiz App Hero" class="hero-img">
+                </div>
+                <h1 class="hero-title animate-slide-up">
+                    Quiz<span class="accent-text">Master</span>
+                </h1>
+                <p class="hero-description animate-slide-up">
+                    Challenge yourself with engaging quizzes across multiple categories. 
+                    Test your knowledge, compete with others, and track your progress!
+                </p>
+                <div class="hero-actions animate-slide-up">
+                    <button class="btn btn-hero" onclick="scrollToQuizzes()">
+                        <span class="icon">🧠</span>
+                        Start Learning
+                    </button>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="icon">👥</span>
+                            <span>5,000+ Students</span>
+                        </div>
+                        <div class="stat">
+                            <span class="icon">🏆</span>
+                            <span>50+ Quizzes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Why Choose QuizMaster?</h2>
+                    <p class="section-description">Experience the most engaging and comprehensive quiz platform</p>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-card animate-slide-up">
+                        <div class="feature-icon gradient-primary">⚡</div>
+                        <h3 class="feature-title">Real-time Feedback</h3>
+                        <p class="feature-description">Get instant feedback on your answers and track your progress in real-time</p>
+                    </div>
+
+                    <div class="feature-card animate-slide-up">
+                        <div class="feature-icon gradient-success">🏆</div>
+                        <h3 class="feature-title">Compete & Achieve</h3>
+                        <p class="feature-description">Challenge yourself and compete with others on our global leaderboards</p>
+                    </div>
+
+                    <div class="feature-card animate-slide-up">
+                        <div class="feature-icon gradient-secondary">🧠</div>
+                        <h3 class="feature-title">Multiple Categories</h3>
+                        <p class="feature-description">Explore quizzes across science, history, programming, sports, and more</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quizzes Section -->
+        <section class="quizzes-section" id="quizzesSection">
+            <div class="container">
+                <div class="section-header-with-action">
+                    <div>
+                        <h2 class="section-title">Featured Quizzes</h2>
+                        <p class="section-description">Choose from our most popular quiz categories</p>
+                    </div>
+                    <button class="btn btn-secondary">
+                        View All
+                        <span class="icon">→</span>
+                    </button>
+                </div>
+                
+                <div class="quiz-grid" id="quizGrid">
+                    <!-- Quiz cards will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="stats-card">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number primary-color">5,000+</div>
+                            <div class="stat-label">Active Users</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number accent-color">50+</div>
+                            <div class="stat-label">Quiz Categories</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number secondary-color">100K+</div>
+                            <div class="stat-label">Quizzes Completed</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number success-color">95%</div>
+                            <div class="stat-label">Satisfaction Rate</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Quiz Page -->
+    <div id="quizPage" class="page">
+        <div class="quiz-container">
+            <!-- Quiz Header -->
+            <div class="quiz-header">
+                <button class="btn btn-ghost" onclick="backToHome()">
+                    <span class="icon">←</span>
+                    Back
+                </button>
+                
+                <div class="timer-display" id="timerDisplay" style="display: none;">
+                    <span class="icon">⏰</span>
+                    <span id="timerText">10:00</span>
+                </div>
+            </div>
+
+            <!-- Progress Section -->
+            <div class="progress-card">
+                <div class="progress-header">
+                    <h2 id="quizTitle">Quiz Title</h2>
+                    <span class="progress-badge" id="progressBadge">0 / 5 answered</span>
+                </div>
+                <div class="progress-info">
+                    <div class="progress-text">
+                        <span id="questionNumber">Question 1 of 5</span>
+                        <span id="progressPercent">20% complete</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question Card -->
+            <div class="question-card animate-bounce-in" id="questionCard">
+                <div class="question-header">
+                    <h3 id="questionText">Question will appear here</h3>
+                </div>
+                <div class="question-content">
+                    <div class="options-container" id="optionsContainer">
+                        <!-- Options will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="quiz-navigation">
+                <button class="btn btn-secondary" id="previousBtn" onclick="previousQuestion()" disabled>
+                    <span class="icon">←</span>
+                    Previous
+                </button>
+
+                <div class="nav-actions">
+                    <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>
+                        Next
+                        <span class="icon">→</span>
+                    </button>
+                    <button class="btn btn-hero" id="finishBtn" onclick="finishQuiz()" style="display: none;">
+                        <span class="icon">🏁</span>
+                        Finish Quiz
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Page -->
+    <div id="resultsPage" class="page">
+        <div class="results-container">
+            <!-- Results Header -->
+            <div class="results-header">
+                <div class="performance-circle" id="performanceCircle">
+                    <span class="performance-icon">🏆</span>
+                </div>
+                <h2 class="results-title">Quiz Completed!</h2>
+                <div class="score-display" id="scoreDisplay">85%</div>
+                <div class="performance-badge" id="performanceBadge">🏆 Excellent</div>
+                <div class="score-details" id="scoreDetails">
+                    You scored <span class="score-number">4</span> out of <span class="total-number">5</span> questions correctly
+                </div>
+                <div class="progress-bar results-progress">
+                    <div class="progress-fill" id="resultsProgressFill"></div>
+                </div>
+            </div>
+
+            <!-- Question Review -->
+            <div class="question-review">
+                <div class="review-header">
+                    <h3>⭐ Question Review</h3>
+                </div>
+                <div class="review-content" id="reviewContent">
+                    <!-- Review items will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="results-actions">
+                <button class="btn btn-hero" onclick="retakeQuiz()">
+                    <span class="icon">🔄</span>
+                    Retake Quiz
+                </button>
+                <button class="btn btn-secondary" onclick="shareResults()">
+                    <span class="icon">📤</span>
+                    Share Results
+                </button>
+                <button class="btn btn-outline" onclick="backToHome()">
+                    <span class="icon">🏠</span>
+                    Back to Home
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
