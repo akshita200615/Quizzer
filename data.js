@@ -9,7 +9,7 @@ const quizData = [
         questionCount: 5,
         timeLimit: 10, // minutes
         participants: 1247,
-        imageUrl: "img/scfun.jpeg",
+        imageUrl: "scfun.jpeg",
         questions: [
             {
                 id: "q1",
@@ -57,7 +57,7 @@ const quizData = [
         questionCount: 5,
         timeLimit: 12,
         participants: 892,
-        imageUrl: "img/WHQui.jpg",
+        imageUrl: "WHQui.jpg",
         questions: [
             {
                 id: "h1",
@@ -105,7 +105,7 @@ const quizData = [
         questionCount: 5,
         timeLimit: 15,
         participants: 2156,
-        imageUrl: "img/PFunde.jpg",
+        imageUrl: "PFunde.jpg",
         questions: [
             {
                 id: "p1",
@@ -163,7 +163,7 @@ const quizData = [
         questionCount: 5,
         timeLimit: 8,
         participants: 743,
-        imageUrl: "img/STriv.jpg",
+        imageUrl: "STriv.jpg",
         questions: [
             {
                 id: "s1",
@@ -207,4 +207,5 @@ const quizData = [
 // Export for use in other files
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = { quizData };
+
 }
