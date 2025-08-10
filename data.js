@@ -9,7 +9,7 @@ const quizData = [
         questionCount: 5,
         timeLimit: 10, // minutes
         participants: 1247,
-        imageUrl: "scfun.jpeg",
+        imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNlUDq5WpdnYr8TiFoUFoGg7oEXxoIPWArPQ&s",
         questions: [
             {
                 id: "q1",
@@ -57,7 +57,7 @@ const quizData = [
         questionCount: 5,
         timeLimit: 12,
         participants: 892,
-        imageUrl: "WHQui.jpg",
+        imageUrl: "https://play-lh.googleusercontent.com/FSi-XkZeIKie6wtu4tm_tQGKbuYPANOoHmhM85Gp9NdjtIhlAV5ug7EKllaw3nSFMRUa",
         questions: [
             {
                 id: "h1",
@@ -105,7 +105,7 @@ const quizData = [
         questionCount: 5,
         timeLimit: 15,
         participants: 2156,
-        imageUrl: "PFunde.jpg",
+        imageUrl: "https://miro.medium.com/v2/resize:fit:1400/1*E9jq3Wm_OSoPk5u4xNzKlg.jpeg",
         questions: [
             {
                 id: "p1",
@@ -163,7 +163,7 @@ const quizData = [
         questionCount: 5,
         timeLimit: 8,
         participants: 743,
-        imageUrl: "STriv.jpg",
+        imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2182970/capsule_616x353.jpg?t=1742941703",
         questions: [
             {
                 id: "s1",
@@ -209,3 +209,4 @@ if (typeof module !== 'undefined' && module.exports) {
     module.exports = { quizData };
 
 }
+
