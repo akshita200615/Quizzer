@@ -23,11 +23,12 @@ const whitelist = [
 
 const corsOptions = {
   origin: (origin, callback) => {
-    // Allow requests with no origin (like Postman) or from our whitelist
-    // We also check if the origin is in the whitelist.
+    // We check if the 'origin' (the site making the request) is in our whitelist
+    // We also allow 'undefined' origins (like Postman or curl)
     if (!origin || whitelist.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
+      console.error('CORS Error: Origin not allowed:', origin); // Log the bad origin
       callback(new Error('Not allowed by CORS'));
     }
   },
