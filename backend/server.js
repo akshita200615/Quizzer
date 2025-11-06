@@ -1,4 +1,3 @@
-// backend/server.js
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
@@ -15,15 +14,17 @@ const app = express();
 app.use(express.json()); // Allows us to accept JSON in the request body
 
 // --- START OF CORS UPDATE ---
-// Define allowed origins
+// We now allow MULTIPLE URLs to talk to our backend
 const whitelist = [
-  process.env.CLIENT_URL, // Your deployed React app
-  'http://localhost:5173' // Your local React app
+  process.env.CLIENT_URL,       // The Railway frontend URL (if you have one)
+  process.env.GITHUB_PAGES_URL, // Your new GitHub Pages URL
+  'http://localhost:5173'       // Your local development URL
 ];
 
 const corsOptions = {
   origin: (origin, callback) => {
     // Allow requests with no origin (like Postman) or from our whitelist
+    // We also check if the origin is in the whitelist.
     if (!origin || whitelist.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
@@ -41,6 +42,7 @@ const PORT = process.env.PORT || 5001;
 // --- API ROUTES (No changes below) ---
 
 // GET: /api/quizzes
+// Get a *list* of all quizzes (without questions)
 app.get('/api/quizzes', async (req, res) => {
   try {
     const quizzes = await Quiz.find().select(
@@ -53,6 +55,7 @@ app.get('/api/quizzes', async (req, res) => {
 });
 
 // GET: /api/quiz/:id
+// Get a *single* quiz with all its questions
 app.get('/api/quiz/:id', async (req, res) => {
   try {
     const quiz = await Quiz.findById(req.params.id);
@@ -68,7 +71,7 @@ app.get('/api/quiz/:id', async (req, res) => {
 // POST route to add a new quiz
 app.post('/api/quizzes', async (req, res) => {
   try {
-    const newQuiz = new Quiz(req.body);
+    const newQuiz = new Quiz(req.body); // req.body should match your schema
     const savedQuiz = await newQuiz.save();
     res.status(201).json(savedQuiz);
   } catch (err) {

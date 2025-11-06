@@ -12,10 +12,14 @@ import HistoryPage from './components/HistoryPage';
 // Utils
 import { saveScore, loadHistory } from './utils/helpers';
 
-// --- UPDATE THE API URL ---
-// This automatically uses the production URL (VITE_API_URL) when deployed,
-// but falls back to localhost for development.
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001';
+// --- CRITICAL UPDATE ---
+// GitHub Pages cannot use environment variables.
+// You MUST hard-code your live Railway backend URL here.
+//
+// !!! REPLACE THIS URL with your *actual* Railway backend URL !!!
+//
+const API_URL = 'https://backend-production-1234.up.railway.app';
+// ---
 
 // --- The Main App Component ---
 function App() {
