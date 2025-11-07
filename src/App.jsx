@@ -18,7 +18,7 @@ import { saveScore, loadHistory } from './utils/helpers';
 //
 // !!! REPLACE THIS URL with your *actual* Railway backend URL !!!
 //
-const API_URL = 'https://backend-production-1234.up.railway.app';
+const API_URL = 'https://quizzer-production-2304.up.railway.app';
 // ---
 
 // --- The Main App Component ---

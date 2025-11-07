@@ -13,22 +13,26 @@ connectDB();
 const app = express();
 app.use(express.json()); // Allows us to accept JSON in the request body
 
-// --- START OF CORS UPDATE ---
-// We now allow MULTIPLE URLs to talk to our backend
+// --- START OF CORS CONFIGURATION ---
+// We will allow MULTIPLE URLs to talk to our backend
 const whitelist = [
-  process.env.CLIENT_URL,       // The Railway frontend URL (if you have one)
-  process.env.GITHUB_PAGES_URL, // Your new GitHub Pages URL
+  process.env.CLIENT_URL,       // A Railway frontend URL (if you have one)
+  process.env.GITHUB_PAGES_URL, // Your GitHub Pages URL
   'http://localhost:5173'       // Your local development URL
 ];
 
 const corsOptions = {
   origin: (origin, callback) => {
-    // We check if the 'origin' (the site making the request) is in our whitelist
-    // We also allow 'undefined' origins (like Postman or curl)
+    // 'origin' is the URL of the site making the request (e.g., https://akshita200615.github.io)
+    
+    // We check if the 'origin' is in our whitelist.
+    // We also allow 'undefined' origins (which happens for Postman or local files)
     if (!origin || whitelist.indexOf(origin) !== -1) {
+      // Allowed!
       callback(null, true);
     } else {
-      console.error('CORS Error: Origin not allowed:', origin); // Log the bad origin
+      // Blocked!
+      console.error('CORS ERROR: This origin is not allowed:', origin);
       callback(new Error('Not allowed by CORS'));
     }
   },
@@ -36,11 +40,11 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-// --- END OF CORS UPDATE ---
+// --- END OF CORS CONFIGURATION ---
 
 const PORT = process.env.PORT || 5001;
 
-// --- API ROUTES (No changes below) ---
+// --- API ROUTES ---
 
 // GET: /api/quizzes
 // Get a *list* of all quizzes (without questions)
